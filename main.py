@@ -2,6 +2,7 @@
 import random
 import hangman_words
 import hangman_art
+from replit import clear
 
 word_list = hangman_words.word_list
 chosen_word = random.choice(word_list)
@@ -15,7 +16,7 @@ stages = hangman_art.stages
 logo = hangman_art.logo
 print(logo)
 #Testing code
-print(f'Pssst, the solution is {chosen_word}.')
+
 
 #Create blanks
 display = []
@@ -23,8 +24,9 @@ for _ in range(word_length):
     display += "_"
 
 while not end_of_game:
+    
     guess = input("Guess a letter: ").lower()
-
+    clear()
     #If the user has entered a letter they've already guessed, print the letter and let them know.
     if guess in display:
       print(f"You've already guessed {guess}")
@@ -39,7 +41,7 @@ while not end_of_game:
     #Check if user is wrong.
     if guess not in chosen_word:
         #TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
-        print(f"you guessed {guess}, that's not in the word, you lose a live")
+        print(f"you guessed {guess}, that's not in the word, you lose a life")
         lives -= 1
         if lives == 0:
             end_of_game = True
